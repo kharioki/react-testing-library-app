@@ -67,3 +67,23 @@ it('should have a text content', () => {
   const paragraphElement = screen.getByTestId("para");
   expect(paragraphElement).toHaveTextContent("3 tasks left");
 })
+
+// not assertion
+
+it('should render number of incomplete tasks - not falsy', () => {
+  render(
+    <MockTodoWrapper numberOfIncompleteTasks={4} />
+  );
+  const paragraphElement = screen.getByText(/4 tasks left/i);
+  expect(paragraphElement).not.toBeFalsy();
+})
+
+// element value assertion
+
+it('should render number of incomplete tasks - element value', () => {
+  render(
+    <MockTodoWrapper numberOfIncompleteTasks={4} />
+  );
+  const paragraphElement = screen.getByTestId("para");
+  expect(paragraphElement.textContent).toBe("4 tasks left");
+})
