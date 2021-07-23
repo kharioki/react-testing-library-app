@@ -10,80 +10,82 @@ const MockTodoWrapper = ({ numberOfIncompleteTasks }) => {
   )
 }
 
-it('should render the correct amount of incomplete tasks', () => {
-  render(
-    <MockTodoWrapper numberOfIncompleteTasks={5} />
-  );
-  const paragraphElement = screen.getByText(/5 tasks left/i);
-  expect(paragraphElement).toBeInTheDocument();
-})
+describe('TodoFooter tests', () => {
+  it('should render the correct amount of incomplete tasks', () => {
+    render(
+      <MockTodoWrapper numberOfIncompleteTasks={5} />
+    );
+    const paragraphElement = screen.getByText(/5 tasks left/i);
+    expect(paragraphElement).toBeInTheDocument();
+  })
 
-it('should render "task" when number of incomplete tasks is one', () => {
-  render(
-    <MockTodoWrapper numberOfIncompleteTasks={1} />
-  );
-  const paragraphElement = screen.getByText(/1 task left/i);
-  expect(paragraphElement).toBeInTheDocument();
-})
+  it('should render "task" when number of incomplete tasks is one', () => {
+    render(
+      <MockTodoWrapper numberOfIncompleteTasks={1} />
+    );
+    const paragraphElement = screen.getByText(/1 task left/i);
+    expect(paragraphElement).toBeInTheDocument();
+  })
 
-// ASSERTION
-// toBeTruthy assertion
+  // ASSERTION
+  // toBeTruthy assertion
 
-it('should render number of incomplete tasks - truthy', () => {
-  render(
-    <MockTodoWrapper numberOfIncompleteTasks={2} />
-  );
-  const paragraphElement = screen.getByText(/2 tasks left/i);
-  expect(paragraphElement).toBeTruthy();
-})
+  it('should render number of incomplete tasks - truthy', () => {
+    render(
+      <MockTodoWrapper numberOfIncompleteTasks={2} />
+    );
+    const paragraphElement = screen.getByText(/2 tasks left/i);
+    expect(paragraphElement).toBeTruthy();
+  })
 
-// toBeVisible assertion - makes sure element is visible to user
+  // toBeVisible assertion - makes sure element is visible to user
 
-it('should render number of incomplete tasks - visible', () => {
-  render(
-    <MockTodoWrapper numberOfIncompleteTasks={2} />
-  );
-  const paragraphElement = screen.getByText(/2 tasks left/i);
-  expect(paragraphElement).toBeVisible();
-})
+  it('should render number of incomplete tasks - visible', () => {
+    render(
+      <MockTodoWrapper numberOfIncompleteTasks={2} />
+    );
+    const paragraphElement = screen.getByText(/2 tasks left/i);
+    expect(paragraphElement).toBeVisible();
+  })
 
-// toContainHTML assertion - check that it cotains a certain html element
+  // toContainHTML assertion - check that it cotains a certain html element
 
-it('should contain a HTML "p" tag', () => {
-  render(
-    <MockTodoWrapper numberOfIncompleteTasks={2} />
-  );
-  const paragraphElement = screen.getByText(/2 tasks left/i);
-  expect(paragraphElement).toContainHTML("p");
-})
+  it('should contain a HTML "p" tag', () => {
+    render(
+      <MockTodoWrapper numberOfIncompleteTasks={2} />
+    );
+    const paragraphElement = screen.getByText(/2 tasks left/i);
+    expect(paragraphElement).toContainHTML("p");
+  })
 
-// toHaveTextContent assertion - Check whether the given element has a text content or not.
+  // toHaveTextContent assertion - Check whether the given element has a text content or not.
 
-it('should have a text content', () => {
-  render(
-    <MockTodoWrapper numberOfIncompleteTasks={3} />
-  );
-  // const paragraphElement = screen.getByRole("paragraph");
-  const paragraphElement = screen.getByTestId("para");
-  expect(paragraphElement).toHaveTextContent("3 tasks left");
-})
+  it('should have a text content', () => {
+    render(
+      <MockTodoWrapper numberOfIncompleteTasks={3} />
+    );
+    // const paragraphElement = screen.getByRole("paragraph");
+    const paragraphElement = screen.getByTestId("para");
+    expect(paragraphElement).toHaveTextContent("3 tasks left");
+  })
 
-// not assertion
+  // not assertion
 
-it('should render number of incomplete tasks - not falsy', () => {
-  render(
-    <MockTodoWrapper numberOfIncompleteTasks={4} />
-  );
-  const paragraphElement = screen.getByText(/4 tasks left/i);
-  expect(paragraphElement).not.toBeFalsy();
-})
+  it('should render number of incomplete tasks - not falsy', () => {
+    render(
+      <MockTodoWrapper numberOfIncompleteTasks={4} />
+    );
+    const paragraphElement = screen.getByText(/4 tasks left/i);
+    expect(paragraphElement).not.toBeFalsy();
+  })
 
-// element value assertion
+  // element value assertion
 
-it('should render number of incomplete tasks - element value', () => {
-  render(
-    <MockTodoWrapper numberOfIncompleteTasks={4} />
-  );
-  const paragraphElement = screen.getByTestId("para");
-  expect(paragraphElement.textContent).toBe("4 tasks left");
+  it('should render number of incomplete tasks - element value', () => {
+    render(
+      <MockTodoWrapper numberOfIncompleteTasks={4} />
+    );
+    const paragraphElement = screen.getByTestId("para");
+    expect(paragraphElement.textContent).toBe("4 tasks left");
+  })
 })
